@@ -1,4 +1,1 @@
-"# StandardApplication" 
-"# StandardApplication" 
-"# StandardApplication" 
-"# StandardApp" 
+Standart Application testing for Git commands.
