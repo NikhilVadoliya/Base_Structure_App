@@ -42,7 +42,7 @@ public class MainActivity extends BaseActivity {
 
     private void getUserDataApi() {
 
-        Call<UserResponse> getResponseCall = ApiClient.getInstance(this).getApiResp().getUserData();
+        Call<UserResponse> getResponseCall = ApiClient.getInstance().getApiResp().getUserData();
         getResponseCall.enqueue(new ApiRespone<UserResponse>() {
             @Override
             public void onApiSuccess(UserResponse userResponse) {

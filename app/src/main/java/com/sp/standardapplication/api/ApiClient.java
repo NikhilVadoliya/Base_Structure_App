@@ -11,7 +11,6 @@ package com.sp.standardapplication.api;
 
 import android.content.Context;
 
-
 import okhttp3.OkHttpClient;
 import okhttp3.logging.HttpLoggingInterceptor;
 import retrofit2.Retrofit;
@@ -26,29 +25,18 @@ import static com.sp.standardapplication.helper.Constants.BASE_URL;
 
 public class ApiClient {
 
-    private static Retrofit retrofit = null;
-    public static ApiClient apiClient;
-    static Context mContext;
-    ApiInterface apiInterface;
+    public static Retrofit retrofit = null;
+    private static ApiClient apiClient;
+    public ApiInterface apiInterface;
 
     private ApiClient() {
 
     }
 
-    public static Retrofit getClient() {
-        if (retrofit == null) {
-            retrofit = new Retrofit.Builder()
-                    .baseUrl(BASE_URL)
-                    .addConverterFactory(GsonConverterFactory.create())
-                    .build();
-        }
-        return retrofit;
-    }
 
-    public static ApiClient getInstance(Context context) {
+    public static ApiClient getInstance() {
         if (apiClient == null)
             apiClient = new ApiClient();
-        mContext = context;
         return apiClient;
     }
 
