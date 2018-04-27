@@ -21,6 +21,6 @@ public class StandardApp extends Application {
     public void onCreate() {
         super.onCreate();
 
-        //Remote code
+        //Local code commit
     }
 }
