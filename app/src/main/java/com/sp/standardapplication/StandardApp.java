@@ -20,5 +20,7 @@ public class StandardApp extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
+        
+        //Remote file
     }
 }
