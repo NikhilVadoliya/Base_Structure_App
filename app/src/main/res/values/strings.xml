@@ -6,4 +6,5 @@
     <string name="msg_api_error_unknown_host"> UnknownHost Request </string>
     <string name="msg_api_error_something_want_wrong">Something want wrong</string>
     <string name="msg_no_internet">No internet connection.</string>
+    <string name="btn_detail">Detail</string>
 </resources>

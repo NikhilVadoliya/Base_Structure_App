@@ -9,20 +9,28 @@ package com.sp.standardapplication.fragments;
  * agreement of Sailfin Technologies, Pvt. Ltd.
  */
 
-import android.app.Fragment;
+import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
+import com.sp.standardapplication.base.BaseActivity;
 
 /**
  * Created by nikhil.vadoliya on 06-04-2018.
  */
 
 
+public abstract class BaseFragment extends Fragment {
 
-public class BaseFragment extends Fragment {
+
+    @Override
+    public void onAttach(Context context) {
+        super.onAttach(context);
+    }
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -38,5 +46,40 @@ public class BaseFragment extends Fragment {
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+    }
+
+    @Override
+    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+        initializeData();
+        setListeners();
+        setToolbar();
+    }
+
+    protected abstract void initializeData();
+
+    protected abstract void setListeners();
+
+    protected abstract void setToolbar();
+
+    public void setToolbar(String title, boolean isBack) {
+        ((BaseActivity) getActivity()).setToolBarTitle(title, isBack);
+    }
+
+    public void showProgress() {
+        ((BaseActivity) getActivity()).showProgress();
+    }
+
+    public void hideProgress() {
+        ((BaseActivity) getActivity()).hideProgress();
+    }
+
+    public void showToast(String s) {
+        ((BaseActivity) getActivity()).showToast(s);
+    }
+
+    public void showToast(int errorcode) {
+        ((BaseActivity) getActivity()).showToast(errorcode);
+
     }
 }

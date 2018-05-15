@@ -6,7 +6,7 @@ import com.sp.standardapplication.R;
 import com.sp.standardapplication.api.ApiClient;
 import com.sp.standardapplication.api.ApiRespone;
 import com.sp.standardapplication.base.BaseActivity;
-import com.sp.standardapplication.helper.Utility;
+import com.sp.standardapplication.fragments.ListDataFragment;
 import com.sp.standardapplication.model.UserResponse;
 
 import retrofit2.Call;
@@ -18,16 +18,16 @@ public class MainActivity extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState, R.layout.activity_main);
 
-        setToolBarTitle("Toolbar");
 
 
-        if (Utility.isConnectingToInternet(this)) {
+       /* if (Utility.isConnectingToInternet(this)) {
             showProgress();
             getUserDataApi();
         } else {
             showToast(getString(R.string.msg_no_internet));
-        }
+        }*/
 
+        pushFragment(R.id.container, new ListDataFragment(), false);
     }
 
     @Override

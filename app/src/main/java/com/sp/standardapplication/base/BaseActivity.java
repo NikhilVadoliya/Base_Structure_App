@@ -8,16 +8,17 @@ package com.sp.standardapplication.base;
  * agreement of Sailfin Technologies, Pvt. Ltd.
  */
 
-import android.annotation.TargetApi;
 import android.content.pm.ActivityInfo;
-import android.content.pm.PackageManager;
 import android.os.Build;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.view.View;
 import android.view.WindowManager;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -34,7 +35,7 @@ public abstract class BaseActivity extends AppCompatActivity {
 
     Toolbar toolbar;
     TextView mToolbarTitle;
-
+    ImageView mImgBack;
     String message;
 
     private CustomProgressDialog mProgressDialog;
@@ -46,7 +47,7 @@ public abstract class BaseActivity extends AppCompatActivity {
 
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         mToolbarTitle = (TextView) findViewById(R.id.toolbar_title);
-
+        mImgBack = findViewById(R.id.img_back);
         setSupportActionBar(toolbar);
         // Remove default title text
         getSupportActionBar().setDisplayShowTitleEnabled(false);
@@ -60,6 +61,13 @@ public abstract class BaseActivity extends AppCompatActivity {
         mProgressDialog = new CustomProgressDialog(this);
         initializeData();
         setListeners();
+
+        mImgBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onBackPressed();
+            }
+        });
     }
 
     @Override
@@ -67,8 +75,10 @@ public abstract class BaseActivity extends AppCompatActivity {
         super.onBackPressed();
     }
 
-    public void setToolBarTitle(String title) {
+    public void setToolBarTitle(String title, boolean isBack) {
         mToolbarTitle.setText(title);
+        mImgBack.setVisibility(isBack ? View.VISIBLE : View.GONE);
+
     }
 
     public void showToast(String s) {
@@ -121,5 +131,22 @@ public abstract class BaseActivity extends AppCompatActivity {
 
     protected abstract void setListeners();
 
+    public void pushFragment(int containerId, Fragment fragment, boolean addToStack) {
+        FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+
+        if (addToStack) {
+            ft.addToBackStack(null);
+        }
+        if (getSupportFragmentManager().findFragmentById(containerId) != null) {
+            ft.hide(getSupportFragmentManager().findFragmentById(containerId));
+        }
+        ft.add(containerId, fragment);
+
+        if (!isFinishing()) {
+            ft.commitAllowingStateLoss();
+        } else {
+            ft.commit();
+        }
+    }
 
 }
