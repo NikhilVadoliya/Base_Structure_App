@@ -1,13 +1,7 @@
-package com.sp.standardapplication.fragments;
+package com.sp.standardapplication.base;
 
 
-/**
- * Copyright (c) 2015-2016 Sailfin Technologies, Pvt. Ltd.  All Rights Reserved.
- * This software is the confidential and proprietary information
- * (Confidential Information) of Sailfin Technologies, Pvt. Ltd.  You shall not
- * disclose or use Confidential Information without the express written
- * agreement of Sailfin Technologies, Pvt. Ltd.
- */
+
 
 import android.content.Context;
 import android.os.Bundle;
@@ -17,11 +11,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.sp.standardapplication.base.BaseActivity;
-
-/**
- * Created by nikhil.vadoliya on 06-04-2018.
- */
 
 
 public abstract class BaseFragment extends Fragment {
@@ -54,6 +43,7 @@ public abstract class BaseFragment extends Fragment {
         initializeData();
         setListeners();
         setToolbar();
+        showData();
     }
 
     protected abstract void initializeData();
@@ -61,6 +51,8 @@ public abstract class BaseFragment extends Fragment {
     protected abstract void setListeners();
 
     protected abstract void setToolbar();
+
+    protected abstract void showData();
 
     public void setToolbar(String title, boolean isBack) {
         ((BaseActivity) getActivity()).setToolBarTitle(title, isBack);

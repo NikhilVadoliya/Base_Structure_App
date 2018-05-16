@@ -40,6 +40,11 @@ public class MainActivity extends BaseActivity {
 
     }
 
+    @Override
+    protected void showData() {
+
+    }
+
     private void getUserDataApi() {
 
         Call<UserResponse> getResponseCall = ApiClient.getInstance().getApiResp().getUserData();

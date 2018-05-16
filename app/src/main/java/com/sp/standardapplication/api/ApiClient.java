@@ -1,13 +1,7 @@
 package com.sp.standardapplication.api;
 
 
-/**
- * Copyright (c) 2015-2016 Sailfin Technologies, Pvt. Ltd.  All Rights Reserved.
- * This software is the confidential and proprietary information
- * (Confidential Information) of Sailfin Technologies, Pvt. Ltd.  You shall not
- * disclose or use Confidential Information without the express written
- * agreement of Sailfin Technologies, Pvt. Ltd.
- */
+
 
 import android.content.Context;
 
@@ -18,9 +12,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 import static com.sp.standardapplication.helper.Constants.BASE_URL;
 
-/**
- * Created by nikhil.vadoliya on 05-04-2018.
- */
+
 
 
 public class ApiClient {

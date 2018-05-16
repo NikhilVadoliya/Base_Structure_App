@@ -1,13 +1,7 @@
 package com.sp.standardapplication.fragments;
 
 
-/**
- * Copyright (c) 2015-2016 Sailfin Technologies, Pvt. Ltd.  All Rights Reserved.
- * This software is the confidential and proprietary information
- * (Confidential Information) of Sailfin Technologies, Pvt. Ltd.  You shall not
- * disclose or use Confidential Information without the express written
- * agreement of Sailfin Technologies, Pvt. Ltd.
- */
+
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -18,11 +12,7 @@ import android.widget.Button;
 
 import com.sp.standardapplication.R;
 import com.sp.standardapplication.base.BaseActivity;
-
-/**
- * Created by nikhil.vadoliya on 15-05-2018.
- */
-
+import com.sp.standardapplication.base.BaseFragment;
 
 public class ListDataFragment extends BaseFragment {
 
@@ -57,6 +47,11 @@ public class ListDataFragment extends BaseFragment {
     @Override
     protected void setToolbar() {
         setToolbar("FragmentToolbar", false);
+    }
+
+    @Override
+    protected void showData() {
+
     }
 
     @Override

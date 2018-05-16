@@ -24,21 +24,7 @@ import com.sp.standardapplication.R;
 
 
 
-/*
- * Copyright (c) 2015-2016 Sailfin Technologies, Pvt. Ltd.  All Rights Reserved.
- * This software is the confidential and proprietary information
- * (Confidential Information) of Sailfin Technologies, Pvt. Ltd.  You shall not
- * disclose or use Confidential Information without the express written
- * agreement of Sailfin Technologies, Pvt. Ltd.
- */
 
-/**
- * Created by meet.parabiya on 6/15/2015.
- */
-
-/**
- * Class Usage : Image view for custom progress bar
- */
 
 
 @SuppressLint("AppCompatCustomView")

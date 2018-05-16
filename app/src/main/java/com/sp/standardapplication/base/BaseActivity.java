@@ -1,12 +1,5 @@
 package com.sp.standardapplication.base;
 
-/**
- * Copyright (c) 2015-2016 Sailfin Technologies, Pvt. Ltd.  All Rights Reserved.
- * This software is the confidential and proprietary information
- * (Confidential Information) of Sailfin Technologies, Pvt. Ltd.  You shall not
- * disclose or use Confidential Information without the express written
- * agreement of Sailfin Technologies, Pvt. Ltd.
- */
 
 import android.content.pm.ActivityInfo;
 import android.os.Build;
@@ -16,6 +9,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.ImageView;
@@ -23,12 +17,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.sp.standardapplication.R;
-import com.sp.standardapplication.helper.StandLog;
 import com.sp.standardapplication.views.CustomProgressDialog;
-
-/**
- * Created by nikhil.vadoliya on 31-08-2017.
- */
 
 
 public abstract class BaseActivity extends AppCompatActivity {
@@ -45,8 +34,8 @@ public abstract class BaseActivity extends AppCompatActivity {
         setContentView(layout);
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 
-        toolbar = (Toolbar) findViewById(R.id.toolbar);
-        mToolbarTitle = (TextView) findViewById(R.id.toolbar_title);
+        toolbar = findViewById(R.id.toolbar);
+        mToolbarTitle = findViewById(R.id.toolbar_title);
         mImgBack = findViewById(R.id.img_back);
         setSupportActionBar(toolbar);
         // Remove default title text
@@ -61,6 +50,7 @@ public abstract class BaseActivity extends AppCompatActivity {
         mProgressDialog = new CustomProgressDialog(this);
         initializeData();
         setListeners();
+        showData();
 
         mImgBack.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -75,9 +65,9 @@ public abstract class BaseActivity extends AppCompatActivity {
         super.onBackPressed();
     }
 
-    public void setToolBarTitle(String title, boolean isBack) {
+    public void setToolBarTitle(String title, boolean isBackButton) {
         mToolbarTitle.setText(title);
-        mImgBack.setVisibility(isBack ? View.VISIBLE : View.GONE);
+        mImgBack.setVisibility(isBackButton ? View.VISIBLE : View.GONE);
 
     }
 
@@ -110,7 +100,7 @@ public abstract class BaseActivity extends AppCompatActivity {
                 mProgressDialog.show("");
             }
         } catch (Exception e) {
-            StandLog.e("show progress - ", e.getMessage());
+            Log.e("show progress - ", e.getMessage());
         }
     }
 
@@ -123,13 +113,15 @@ public abstract class BaseActivity extends AppCompatActivity {
                 mProgressDialog.hide();
             }
         } catch (Exception e) {
-            StandLog.e("hide progress - ", e.getMessage());
+            Log.e("hide progress - ", e.getMessage());
         }
     }
 
     protected abstract void initializeData();
 
     protected abstract void setListeners();
+
+    protected abstract void showData();
 
     public void pushFragment(int containerId, Fragment fragment, boolean addToStack) {
         FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
