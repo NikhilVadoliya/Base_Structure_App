@@ -56,9 +56,9 @@ public class MainActivity extends BaseActivity {
             }
 
             @Override
-            public void onApiError(int errorcode) {
+            public void onApiError(String message) {
                 hideProgress();
-                showToast(errorcode);
+                showToast(message);
             }
         });
     }

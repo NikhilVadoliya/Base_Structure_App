@@ -75,23 +75,6 @@ public abstract class BaseActivity extends AppCompatActivity {
         Toast.makeText(this, s, Toast.LENGTH_SHORT).show();
     }
 
-    public void showToast(int errorcode) {
-
-        switch (errorcode) {
-            case 1:
-                message = getString(R.string.msg_api_error_timeout);
-                break;
-            case 2:
-                message = getString(R.string.msg_api_error_unknown_host);
-                break;
-
-            default:
-                message = getString(R.string.msg_api_error_something_want_wrong);
-
-        }
-        showToast(message);
-    }
-
     public void showProgress() {
         try {
             if (mProgressDialog != null) {

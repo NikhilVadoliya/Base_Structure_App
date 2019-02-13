@@ -70,8 +70,5 @@ public abstract class BaseFragment extends Fragment {
         ((BaseActivity) getActivity()).showToast(s);
     }
 
-    public void showToast(int errorcode) {
-        ((BaseActivity) getActivity()).showToast(errorcode);
 
-    }
 }
